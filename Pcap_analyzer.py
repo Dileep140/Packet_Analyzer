@@ -1,5 +1,5 @@
 import os #this module used for interacting with operating system.
-from datetime import date,datetime #
+from datetime import date,datetime 
 import pandas as pd # Pandas is a powerful data manipulation and analysis library for Python.
 import matplotlib.pyplot as plt
 import webbrowser
@@ -52,8 +52,8 @@ class PCAPAnalyzer:
         return path
 
     def generate_html(self):
-        self.template_file=r'c:/Users/swath/OneDrive/Desktop/python/Projects/Pcap_Analyzer/template.html'
-        self.output_file = f'c:/Users/swath/OneDrive/Desktop/python/Projects/Pcap_Analyzer/output_{datetime.now().strftime("%Y%m%d%H%M%S")}.html'
+        self.template_file=r'c:/python/Projects/Pcap_Analyzer/template.html'
+        self.output_file = f'c:/python/Projects/Pcap_Analyzer/output_{datetime.now().strftime("%Y%m%d%H%M%S")}.html'
 
         with open(self.template_file, 'r') as f:
             content = f.read()
@@ -66,9 +66,9 @@ class PCAPAnalyzer:
             top_dest_ip_percentages=self.top_dest_ip_percentages().items(),
             top_src_ip_percentages=self.top_src_ip_percentages().items(),
             top_protocol_percentages=self.top_protocol_percentages().items(),
-            dest_ip_graph_path=self.bar_graph(self.top_dest_ip_percentages(),"dest_ip vs percentage",r"C:\Users\swath\OneDrive\Desktop\python\Projects\Pcap_Analyzer\dest_ip.png"),
-            src_ip_graph_path=self.bar_graph(self.top_src_ip_percentages(),"src_ip vs percentage",r"C:\Users\swath\OneDrive\Desktop\python\Projects\Pcap_Analyzer\src_ip.png"),
-            protocol_ip_graph_path=self.bar_graph(self.top_protocol_percentages(),"protocol vs percentage",r"C:\Users\swath\OneDrive\Desktop\python\Projects\Pcap_Analyzer\protocol.png")
+            dest_ip_graph_path=self.bar_graph(self.top_dest_ip_percentages(),"dest_ip vs percentage",r"C:\python\Projects\Pcap_Analyzer\dest_ip.png"),
+            src_ip_graph_path=self.bar_graph(self.top_src_ip_percentages(),"src_ip vs percentage",r"C:\python\Projects\Pcap_Analyzer\src_ip.png"),
+            protocol_ip_graph_path=self.bar_graph(self.top_protocol_percentages(),"protocol vs percentage",r"C:\python\Projects\Pcap_Analyzer\protocol.png") 
         )
     
         with open(self.output_file, 'w') as f:
@@ -85,8 +85,7 @@ class PCAPAnalyzer:
     
 
 if __name__ == "__main__":
-    # Replace 'your_file.csv' with the actual file path
-    csv_file_path = r"C:\Users\swath\OneDrive\Desktop\python\Projects\Pcap_Analyzer\sample_capture.csv"
+    csv_file_path = r"Enter your csv_file path" #C:\python\Projects\Pcap_Analyzer\sample.csv
 
     analyzer = PCAPAnalyzer(csv_file_path)
     analyzer.print_results()

@@ -13,7 +13,7 @@ A Python-based tool for analyzing network traffic data and generating insightful
 * Produces interactive HTML reports with embedded graphs for easy dissemination.
 
 # Project Structure:
-* network_traffic_analyzer.py: The main Python script for analyzing network traffic data.
+* Pcap_analyzer.py: The main Python script for analyzing network traffic data.
 
 * template.html: HTML template used for generating the final report.
 

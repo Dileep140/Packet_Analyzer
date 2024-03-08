@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pcap Analyzer</title>
+    <style>
+      body {
+          font-family: 'Arial', sans-serif;
+          margin: 20px;
+          padding: 20px;
+          background-color: #f5f5f5;
+      }
+
+      h1, h2, h3 {
+          color: #333;
+      }
+
+      table {
+          width: 100%;
+          margin-top: 10px;
+          border: 1px solid #ddd;
+          border-collapse: collapse;
+      }
+
+      th, td {
+          padding: 10px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+      }
+
+      th {
+          background-color: #f2f2f2;
+      }
+
+      img {
+          display: block;
+          margin: auto;
+          max-width: 100%;
+          height: auto;
+          margin-top: 10px;
+      }
+  </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Analysis of your file named {{ filename }}</h1>
+    <h2 style="text-align: left;">{{ date }}</h2>
+    <h2>Number of packets in this file are: {{ packets }}</h2>
+
+    <h2>Top 5 Destination IPs and their Percentages:</h2>
+    <table>
+        <thead>
+          <tr>
+            <th>IP Address</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ip, percentage in top_dest_ip_percentages %}
+          <tr>
+            <td>{{ ip }}</td>
+            <td>{{ percentage }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <h2>Destination IP Graph</h2>
+      <img src="{{ dest_ip_graph_path }}" alt="Destination IP Graph">
+      <h2>Top 5 Source IPs and their Percentages:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>IP Address</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ip, percentage in top_src_ip_percentages %}
+          <tr>
+            <td>{{ ip }}</td>
+            <td>{{ percentage }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <h2>Source IP Graph</h2>
+      <img src="{{ src_ip_graph_path }}" alt="Source IP Graph">
+      <h2>Top 5 Protocols and their Percentages:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Protocol</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for protocol, percentage in top_protocol_percentages %}
+          <tr>
+            <td>{{ protocol }}</td>
+            <td>{{ percentage }}%</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <h2>Protocol Graph</h2>
+      <img src="{{ protocol_ip_graph_path }}" alt="protocol IP Graph">
+</body>
+</html>
+
